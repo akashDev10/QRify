@@ -194,8 +194,8 @@
 <body>
     <div class="container">
         <header>
-            <h1>ScanCraft</h1>
-            <p class="tagline">Generate QR codes for URLs, vCards, and plain text</p>
+            <h1>ScanCraft <h4> - By Akash </h4></h1>
+            <p class="tagline">Generate QR codes for URLs, vCards, PDF, and plain text</p>
         </header>
         
         <div class="card">
@@ -450,7 +450,7 @@
                     }
                 }
                 
-                const extension = qrType === 'Barcode' ? 'svg' : 'png';
+                const extension = 'png';
                 downloadLink.download = `${downloadFilename}.${extension}`;
             })
             .catch(error => {

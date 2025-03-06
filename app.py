@@ -87,30 +87,8 @@ def generate_qr_code():
         # The vCard data should already be formatted by the frontend
         qr_data = data
     elif qr_type == 'Barcode':
-        # Handle barcode generation differently
-        img_byte_arr = generate_barcode(data)
-        # Get unique filename with .svg extension (barcodes are vector graphics)
-        unique_filename = get_unique_filename(filename, 'svg')
-        file_path = os.path.join('static/qrcodes', unique_filename)
-        
-        # Save the barcode to file
-        with open(file_path, 'wb') as f:
-            f.write(img_byte_arr.getvalue())
-        
-        # Set content type to SVG for proper PDF embedding
-        
-        # Convert to base64 for preview
-        encoded_img = base64.b64encode(img_byte_arr.getvalue()).decode('utf-8')
-        
-        # Generate URL for the saved file
-        file_url = f"/static/qrcodes/{unique_filename}"
-        
-        # Return JSON with both base64 and file URL
-        return jsonify({
-            'qr_code': encoded_img,
-            'file_url': file_url,
-            'filename': unique_filename
-        })
+        # Use QR code generation for barcodes instead of SVG barcode
+        qr_data = data
     else:
         qr_data = data
     

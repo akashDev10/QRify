@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+        img {
+            margin-top: 20px;
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>QR Code Generator</h1>
+        <div class="form-group">
+            <label for="data">Data</label>
+            <input type="text" id="data" placeholder="Enter data for QR code">
+        </div>
+        <div class="form-group">
+            <label for="type">Type</label>
+            <select id="type">
+                <option value="url">URL</option>
+                <option value="vcard">vCard</option>
+                <option value="text">Text</option>
+            </select>
+        </div>
+        <button onclick="generateQRCode()">Generate QR Code</button>
+        <img id="qrCode" src="" alt="QR Code will appear here">
+    </div>
+
+    <script>
+        function generateQRCode() {
+            const data = document.getElementById('data').value;
+            const type = document.getElementById('type').value;
+
+            fetch('/generate_qr', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ data, type })
+            })
+            .then(response => response.blob())
+            .then(blob => {
+                const url = URL.createObjectURL(blob);
+                document.getElementById('qrCode').src = url;
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>

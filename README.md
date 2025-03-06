@@ -1,8 +1,8 @@
-# QRify
+# ScanCraft
 
 A versatile QR code generator web application built with Flask.
 
-![QRify Logo](https://via.placeholder.com/150?text=QRify)
+![ScanCraft Logo](https://via.placeholder.com/150?text=ScanCraft)
 
 ## Features
 
@@ -17,7 +17,7 @@ A versatile QR code generator web application built with Flask.
 
 ## Screenshots
 
-![QRify Screenshot](https://via.placeholder.com/800x450?text=QRify+Screenshot)
+![ScanCraft Screenshot](https://via.placeholder.com/800x450?text=ScanCraft+Screenshot)
 
 ## Installation
 
@@ -30,8 +30,8 @@ A versatile QR code generator web application built with Flask.
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/QRify.git
-   cd QRify
+   git clone https://github.com/yourusername/ScanCraft.git
+   cd ScanCraft
    ```
 
 2. **Create a virtual environment**
@@ -93,7 +93,7 @@ You can customize various aspects of your QR codes by modifying the parameters i
 ### Project Structure
 
 ```
-QRify/
+ScanCraft/
 ├── app.py            # Main Flask application file
 ├── index.html        # HTML template
 ├── requirements.txt  # Python dependencies
